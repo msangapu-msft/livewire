@@ -1,5 +1,6 @@
-@echo off 
-
-echo ---Deploying site 
-REM ---Deploy the wwwroot folder in repository to default target (wwwroot)
-xcopy %DEPLOYMENT_SOURCE%\ui\* %DEPLOYMENT_TARGET%/Y /s 
+if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
+  cd "$DEPLOYMENT_TARGET"
+  eval $NPM_CMD install --production
+  exitWithMessageOnError "npm failed"
+  cd - > /dev/null
+fi
