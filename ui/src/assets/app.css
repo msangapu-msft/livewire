@@ -4,22 +4,25 @@ header {
   @apply border border-gray-200 mb-2 p-3;
 }
 
-.tabs {
-  border-bottom: 1px solid #f2f2f2;
-  padding-bottom: 5px;
+input[type='text'] {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
 
-.tabs li {
-  display: inline;
+hr.tabs-divider {
+  margin-top: -1px;
+}
+
+.tab {
+  display: inline-block;
   padding: 0.5rem;
   cursor: pointer;
 }
 
-.tabs li:hover {
+.tab:hover {
   background-color: #f2f2f2;
 }
 
-.tabs .selected {
+.selected {
   border-left: 1px solid #e3e3e3;
   border-right: 1px solid #e3e3e3;
   border-top: 3px solid #0065b3;
@@ -39,8 +42,8 @@ footer {
 button.action {
   background-color: #2ea44f;
   @apply text-white rounded-md text-sm p-2;
+  height: 37px;
 }
-
 button.link {
   color: #2b8fe5;
   @apply text-sm p-2;
@@ -51,29 +54,50 @@ button:focus {
   outline: 0;
 }
 
-/* FilterSetting */
 .filter-setting {
   background-color: #eee;
   @apply border p-2 mt-2 mb-2 shadow-xs rounded-sm;
 }
 
 .filter-setting .options {
-  display: block;
+  @apply flex;
   max-height: 200px;
   overflow: auto;
+}
+
+@screen sm {
+  .filter-setting {
+    @apply block;
+  }
 }
 
 .filter-setting .options label {
   @apply leading-5 cursor-pointer;
 }
 
-.filter-setting .options input["type='checkbox'"]:hover {
-  @apply border;
-}
-
 .fadeout-5sec-delay {
   -webkit-animation: 1s ease 5s normal forwards 1 fadeout;
   animation: 1s ease 5s normal forwards 1 fadeout;
+}
+
+.card .stats,
+.card .facets {
+  @apply text-xs mt-5;
+}
+
+.card .stats .label,
+.card .facets .label {
+  @apply uppercase font-semibold;
+}
+
+.card .stats div,
+.card .facets div {
+  border-bottom: 1px solid;
+  @apply py-1 border-gray-300;
+}
+
+.resource-tag {
+  @apply inline-block bg-gray-200 p-1 mx-1 font-semibold text-gray-800 rounded-sm mb-1;
 }
 
 @keyframes fadeout {
@@ -103,7 +127,18 @@ button.search {
 }
 
 .card {
-  @apply m-3 w-3/5 border rounded-sm overflow-hidden shadow-md bg-white;
+  min-height: 28rem;
+  @apply m-3 rounded-sm overflow-hidden shadow-md bg-white w-full;
+}
+
+@screen sm {
+  .card {
+    @apply w-2/5;
+  }
+}
+
+.card:hover {
+  @apply border-gray-500;
 }
 
 .card .title {
@@ -114,8 +149,33 @@ button.search {
   @apply text-blue-700;
 }
 
-.resource-tag {
-  @apply m-1 inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 mr-2;
+.facet-label {
+  @apply w-3/12 font-semibold text-xs pt-2 pr-1 text-right;
+}
+
+.facet-list {
+  @apply w-9/12;
+}
+
+.generator-container {
+  background-color: #f2f2f2;
+}
+
+.generator {
+  @apply bg-white shadow-md rounded m-4 p-4 max-w-4xl ml-auto mr-auto;
+}
+
+.generator label {
+  @apply block text-gray-700 text-sm font-semibold mb-2;
+}
+
+.generator label > span {
+  @apply text-gray-600 text-sm font-normal;
+}
+
+pre {
+  background-color: #f2f2f2;
+  @apply p-5 rounded-md border;
 }
 
 @tailwind components;
